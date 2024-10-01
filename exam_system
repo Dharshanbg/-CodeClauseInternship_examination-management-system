@@ -1,0 +1,24 @@
+CREATE DATABASE IF NOT EXISTS exam_system;
+USE exam_system;
+
+CREATE TABLE users (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(30) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin', 'student') NOT NULL
+);
+
+CREATE TABLE exams (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    exam_name VARCHAR(255) NOT NULL,
+    exam_date DATE NOT NULL
+);
+
+CREATE TABLE form_submissions (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    student_id INT(6) UNSIGNED,
+    exam_id INT(6) UNSIGNED,
+    form_status ENUM('submitted', 'accepted', 'rejected') NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES users(id),
+    FOREIGN KEY (exam_id) REFERENCES exams(id)
+);
