@@ -1,8 +1,5 @@
 # -CodeClauseInternship_examination-management-system
 
-Here’s a human-friendly README file for your **Examination Management System** project:
-
----
 
 # Examination Management System
 
